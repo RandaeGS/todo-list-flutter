@@ -40,11 +40,22 @@ class _MyListState extends State<MyList> {
 
 
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () => {},
+          onPressed: () => {
+            showTextDialog(context)
+          },
           label: const Icon(Icons.add)
       ),
     );
   }
 }
 
+Future<void> showTextDialog(BuildContext context) async{
+  return showDialog(context: context,
+      builder: (context) {
+        return const AlertDialog(
+          title: Text("Enter new task"),
 
+        );
+      }
+  );
+}
