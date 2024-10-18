@@ -16,9 +16,17 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Todo App"),
           backgroundColor: Colors.lightBlue,
+
         ),
 
         body: const MyList(),
+
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed:
+          () {
+
+          }, label: const Icon(Icons.add),
+        ),
       ),
     );
   }
@@ -39,7 +47,6 @@ class _MyListState extends State<MyList> {
     return const Column(
 
       children: [
-        const Text("hola")
       ],
     );
   }
