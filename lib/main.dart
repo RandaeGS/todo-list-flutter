@@ -37,6 +37,12 @@ class _MyListState extends State<MyList> {
         title: const Text("Todo List"),
         backgroundColor: Colors.lightBlue,
       ),
+
+
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () => {},
+          label: const Icon(Icons.add)
+      ),
     );
   }
 }
