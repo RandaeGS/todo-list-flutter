@@ -9,25 +9,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Todo App"),
-          backgroundColor: Colors.lightBlue,
-
-        ),
-
-        body: const MyList(),
-
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed:
-          () {
-
-          }, label: const Icon(Icons.add),
-        ),
-      ),
+      title: "Todo List",
+      home: MyList(),
     );
   }
 }
@@ -44,10 +30,13 @@ class _MyListState extends State<MyList> {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Scaffold(
 
-      children: [
-      ],
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Todo List"),
+        backgroundColor: Colors.lightBlue,
+      ),
     );
   }
 }
