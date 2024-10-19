@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -50,18 +51,30 @@ class _MyListState extends State<MyList> {
 }
 
 Future<void> showTextDialog(BuildContext context) async{
-  return showDialog(context: context,
+  String valueText;
+  return showDialog(
+      context: context,
       builder: (context) {
         return AlertDialog(
           title: const Text("Enter new task"),
-          content: const TextField(
-            autofocus: true,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))
 
-            decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.zero))),
+          ),
+          content: TextField(
+            autofocus: true,
+            onChanged: (value) {
+
+            },
+
+            decoration: const InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.zero))),
           ),
           actions: <Widget>[
             MaterialButton(
               color: Colors.grey,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15))
+              ),
               onPressed: () {
 
               },
@@ -69,8 +82,10 @@ Future<void> showTextDialog(BuildContext context) async{
             ),
             MaterialButton(
               color: Colors.lightBlue,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15))
+              ),
               onPressed: () {
-
               },
               child: const Text("Ok"),
             )
