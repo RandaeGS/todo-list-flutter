@@ -52,9 +52,29 @@ class _MyListState extends State<MyList> {
 Future<void> showTextDialog(BuildContext context) async{
   return showDialog(context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text("Enter new task"),
+        return AlertDialog(
+          title: const Text("Enter new task"),
+          content: const TextField(
+            autofocus: true,
 
+            decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.zero))),
+          ),
+          actions: <Widget>[
+            MaterialButton(
+              color: Colors.grey,
+              onPressed: () {
+
+              },
+              child: const Text("Cancel"),
+            ),
+            MaterialButton(
+              color: Colors.lightBlue,
+              onPressed: () {
+
+              },
+              child: const Text("Ok"),
+            )
+          ],
         );
       }
   );
