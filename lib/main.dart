@@ -26,7 +26,7 @@ class MyList extends StatefulWidget {
 }
 
 class _MyListState extends State<MyList> {
-  var counter = 0;
+  List<String> taskList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class _MyListState extends State<MyList> {
 
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () => {
-            showTextDialog(context)
+            showTextDialog(context, taskList)
           },
           label: const Icon(Icons.add)
       ),
@@ -49,7 +49,7 @@ class _MyListState extends State<MyList> {
   }
 }
 
-Future<void> showTextDialog(BuildContext context) async{
+Future<void> showTextDialog(BuildContext context, taskList) async{
   TextEditingController textController = TextEditingController();
 
   return showDialog(
@@ -94,6 +94,7 @@ Future<void> showTextDialog(BuildContext context) async{
                   borderRadius: BorderRadius.all(Radius.circular(15))
               ),
               onPressed: () {
+                taskList.add(textController.text);
               },
               child: const Text("Ok"),
             )
