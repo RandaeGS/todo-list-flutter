@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -51,7 +50,8 @@ class _MyListState extends State<MyList> {
 }
 
 Future<void> showTextDialog(BuildContext context) async{
-  String valueText;
+  TextEditingController textController = TextEditingController();
+
   return showDialog(
       context: context,
       builder: (context) {
@@ -62,24 +62,32 @@ Future<void> showTextDialog(BuildContext context) async{
 
           ),
           content: TextField(
+            controller: textController,
             autofocus: true,
+            minLines: 1,
+            maxLines: 5,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20)
+              )
+            ),
             onChanged: (value) {
 
             },
-
-            decoration: const InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.zero))),
           ),
           actions: <Widget>[
+
             MaterialButton(
               color: Colors.grey,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(15))
               ),
               onPressed: () {
-
+                Navigator.of(context).pop();
               },
               child: const Text("Cancel"),
             ),
+
             MaterialButton(
               color: Colors.lightBlue,
               shape: const RoundedRectangleBorder(
