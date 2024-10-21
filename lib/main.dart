@@ -62,9 +62,30 @@ class MyTaskListView extends StatelessWidget {
       itemCount: taskList.length,
       itemBuilder: (context, index){
         return Card(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))
+          ),
             child: Dismissible(
               key: Key(taskList[index]),
+              background: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  child: const Icon(Icons.delete, color: Colors.white),
+                )
+
+              ),
+              onDismissed: (direction) {
+                taskList.removeAt(index);
+              },
+              direction: DismissDirection.startToEnd,
+
               child: ListTile(
+                leading: const Icon(Icons.arrow_right_alt),
                 title: Text(taskList[index]),
                 trailing: const Icon(Icons.check_box_outline_blank),
               ),
@@ -99,9 +120,6 @@ Future<void> showTextDialog(BuildContext context, taskList) async{
                 borderRadius: BorderRadius.circular(20)
               )
             ),
-            onChanged: (value) {
-
-            },
           ),
           actions: <Widget>[
 
