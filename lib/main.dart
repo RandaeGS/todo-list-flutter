@@ -38,16 +38,28 @@ class _MyListState extends State<MyList> {
         backgroundColor: Colors.lightBlue,
       ),
 
+      body: MyTaskListView(taskList: taskList),
 
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () => {
-            showTextDialog(context, taskList)
+          onPressed: () async => {
+            await showTextDialog(context, taskList),
+            setState(() {}),
           },
           label: const Icon(Icons.add)
       ),
     );
   }
 }
+
+class MyTaskListView extends StatelessWidget {
+  const MyTaskListView({super.key, required taskList});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
 
 Future<void> showTextDialog(BuildContext context, taskList) async{
   TextEditingController textController = TextEditingController();
@@ -95,6 +107,7 @@ Future<void> showTextDialog(BuildContext context, taskList) async{
               ),
               onPressed: () {
                 taskList.add(textController.text);
+                Navigator.of(context).pop();
               },
               child: const Text("Ok"),
             )
