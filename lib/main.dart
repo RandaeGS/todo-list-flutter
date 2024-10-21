@@ -52,11 +52,22 @@ class _MyListState extends State<MyList> {
 }
 
 class MyTaskListView extends StatelessWidget {
-  const MyTaskListView({super.key, required taskList});
+  final List<String> taskList;
+
+  const MyTaskListView({super.key, required this.taskList});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ListView.builder(
+      itemCount: taskList.length,
+      itemBuilder: (context, index){
+        return Card(
+          child: ListTile(
+            title: Text(taskList[index]),
+          ),
+        );
+        },
+    );
   }
 }
 
