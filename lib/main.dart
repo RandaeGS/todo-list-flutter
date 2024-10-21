@@ -62,11 +62,14 @@ class MyTaskListView extends StatelessWidget {
       itemCount: taskList.length,
       itemBuilder: (context, index){
         return Card(
-          child: ListTile(
-            leading: const Icon(Icons.task_rounded),
-            title: Text(taskList[index]),
-            trailing: const Icon(Icons.check_box_outline_blank),
-          ),
+            child: Dismissible(
+              key: Key(taskList[index]),
+              child: ListTile(
+                title: Text(taskList[index]),
+                trailing: const Icon(Icons.check_box_outline_blank),
+              ),
+            )
+
         );
         },
     );
